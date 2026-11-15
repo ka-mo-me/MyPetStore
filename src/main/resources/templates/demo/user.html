@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用户查询</title>
+    <style>
+        body {
+            max-width: 40rem;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: "Source Sans 3", system-ui, sans-serif;
+            line-height: 1.5;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a + a {
+            margin-left: 1rem;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 0.5rem 1rem;
+        }
+
+        dt {
+            font-weight: 600;
+        }
+
+        dd {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>用户查询</h1>
+    <p th:text="${message}"></p>
+
+    <form th:action="@{/demo/user/page}" method="get">
+        <label for="username">用户名</label>
+        <input id="username" name="username" type="text" th:value="${username}">
+        <button type="submit">查询</button>
+    </form>
+
+    <nav aria-label="示例用户">
+        <a th:href="@{/demo/user/page(username='alice')}">alice</a>
+        <a th:href="@{/demo/user/page(username='bob')}">bob</a>
+    </nav>
+
+    <dl>
+        <dt>ID</dt>
+        <dd th:text="${user.id}"></dd>
+        <dt>用户名</dt>
+        <dd th:text="${user.username}"></dd>
+        <dt>显示名称</dt>
+        <dd th:text="${user.displayName}"></dd>
+        <dt>角色</dt>
+        <dd th:text="${user.role}"></dd>
+        <dt>状态</dt>
+        <dd th:text="${user.status}"></dd>
+    </dl>
+</main>
+</body>
+</html>

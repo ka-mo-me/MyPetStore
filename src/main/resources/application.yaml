@@ -1,3 +1,8 @@
 spring:
   application:
-    name: MyPetStore
+    name: MyPetStore-SSM
+  profiles:
+    default: dev
+  sql:
+    init:
+      mode: never
